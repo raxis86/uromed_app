@@ -68,6 +68,15 @@
  	background-repeat: no-repeat;
  	background-position: center;
  }
+ #sign_up {
+	display: block;
+ 	font-size: 9.0pt;
+ 	margin: 0 auto;
+ 	max-width: 960px;
+ 	color: #999;
+ 	right: -1px;
+ } 
+
 
  /*Мобильная версия*/
 @media only screen and (max-width: 850px){

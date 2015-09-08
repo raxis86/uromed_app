@@ -60,4 +60,15 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include Capybara::DSL
+
+
+end
+
+def full_title(title)
+  base_title = "Сайт лечебно-консультативного центра УРОМЕД"
+  if title.empty?
+    base_title
+  else
+    "#{base_title} | #{title}"
+  end
 end

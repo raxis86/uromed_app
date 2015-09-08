@@ -12,9 +12,8 @@
 <body>
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="logobk">
-      	<div id="logo"> 
-      		<%= link_to "", 'home', id: "logo"%>
-      	</div>
+      	<%= link_to "", root_path, id: "logo"%>
+      	<%= link_to "Регистрация", signup_path, id: "sign_up" %>
       </div>
       <div class="content-wrapper">
       	  <div class="topinfo">
@@ -26,11 +25,11 @@
       	  </div>
           <nav>
             <ul id="topmenu">
-              <li><%= link_to "Главная", 'home' %></li>
-              <li><%= link_to "Деятельность", 'about' %></li>
+              <li><%= link_to "Главная", root_path %></li>
+              <li><%= link_to "Деятельность", about_path %></li>
               <li><%= link_to "Стоимость услуг", '#' %></li>
-              <li><%= link_to "Контакты", 'contacts' %></li>
-              <li><%= link_to "Полезная информация", 'other' %></li>
+              <li><%= link_to "Контакты", contacts_path %></li>
+              <li><%= link_to "Полезная информация", other_path %></li>
             </ul>
           </nav>
       </div>
