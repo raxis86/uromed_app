@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Сайт лечебно-консультативного центра УРОМЕД | <%= yield(:title) %></title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 <body>
-
-<%= yield %>
-
+<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="content-wrapper">
+        <div class="logobk">
+        	<%= link_to image_tag("logo.png", alt: "Rails"), 'home', id: "logo"%> 
+        		
+        </div>
+          <nav>
+            <ul class="nav pull-right">
+              <li><%= link_to "Главная", 'home' %></li>
+              <li><%= link_to "Деятельность", 'about' %></li>
+              <li><%= link_to "Стоимость услуг", '#' %></li>
+              <li><%= link_to "Контакты", 'contacts' %></li>
+              <li><%= link_to "Полезная информация", 'other' %></li>
+            </ul>
+          </nav>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
 </body>
 </html>
