@@ -14,13 +14,67 @@
  	max-width: 960px;
  }
  div.logobk {
+ 	border-top: 10px solid #28166f;
  	background: #fff;
  	background: linear-gradient(to top,#fff,#9AA8D3);
- 	padding: 10px;
+ 	padding: 20px;
+ 	/*padding-left: 100px;*/
  	margin: 0 auto;
+ }
+ div.topinfo {
+ 	color: #999;
+ 	font-size: 8.0pt;
+ 	right: 1px;
+ }
+ /*стили меню*/
+ ul#topmenu {
+ 	list-style: none;
+ 	padding: 0;
+ 	margin-bottom: 40px;
+ 	margin-top: 5px;
+ 	margin-left: 0px;
+ 	font-size: 15.0pt;
+ 	font-weight: bold; 
+
+ }
+ 	ul#topmenu li {
+ 		display: inline;
+ 	}
+ 		ul#topmenu li a {
+ 			text-decoration: none;
+ 			color: #999;
+ 		}
+ 			ul#topmenu li a:hover{
+ 				color: #28166f;
+ 			}
+ 			ul#topmenu li a:active{
+ 				color: red;
+ 			}
+ /*конец --стили меню*/	
+
+ footer.footer{
+ 	border-top: 1px solid #9AA8D3;
+ 	text-align: center;
+ 	font-size: 9.0pt;
+ 	margin-top: 5%;
+ 	color: #999;
  }
  #logo {
- 	padding: 55px;
+ 	display: block;
+ 	height: 100px;
  	margin: 0 auto;
- 	max-width: 600px;
+ 	max-width: 960px;
+ 	background-image: url('/assets/logo.png');
+ 	background-repeat: no-repeat;
+ 	background-position: center;
  }
+
+ /*Мобильная версия*/
+@media only screen and (max-width: 850px){
+	#logo{
+		background-image: url('/assets/logo3.png')
+	}
+	ul#topmenu li {
+		display: block;
+	}
+}

@@ -11,13 +11,21 @@
 </head>
 <body>
 <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="logobk">
+      	<div id="logo"> 
+      		<%= link_to "", 'home', id: "logo"%>
+      	</div>
+      </div>
       <div class="content-wrapper">
-        <div class="logobk">
-        	<%= link_to image_tag("logo.png", alt: "Rails"), 'home', id: "logo"%> 
-        		
-        </div>
+      	  <div class="topinfo">
+      	  	Лицензия № 03-01-000175 от 27.12.2007.
+            Часы работы: с 9-00 до 19-00, 
+            суббота – с 9 до 13-00,
+            выходной – воскресенье.
+            тел. (3012) 46-72-82
+      	  </div>
           <nav>
-            <ul class="nav pull-right">
+            <ul id="topmenu">
               <li><%= link_to "Главная", 'home' %></li>
               <li><%= link_to "Деятельность", 'about' %></li>
               <li><%= link_to "Стоимость услуг", '#' %></li>
@@ -29,6 +37,7 @@
     </header>
     <div class="content-wrapper">
       <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
 </body>
 </html>
