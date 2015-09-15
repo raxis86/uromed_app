@@ -1,3 +1,7 @@
+@import "bootstrap";
+
+$grayLighter: #999;
+
  html {
  	background-color: #fff;
  	margin: 0;
@@ -9,18 +13,53 @@
  	padding: 0;
  }
 
+ /* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+p {
+	text-align:justify;
+  	font-size: 14.0pt;
+  	font-family: Arial;
+  	line-height: 1.5;
+  	/*text-indent: 1.5em;*/
+}
+
+p.home {
+	text-align:justify;
+  	font-size: 18.0pt;
+  	font-family: Arial;
+  	line-height: 1.5;
+}
+
+p.home-center {
+	text-align:center;
+  	font-size: 18.0pt;
+  	font-family: Arial;
+  	line-height: 1.5;
+}
+
+
+/* end typography */
+
  .content-wrapper {
  	margin: 0 auto;
  	max-width: 960px;
  }
 
- .gravatar {
-   float: left;
-   margin-right: 10px;
- }
-
- .btn {
-
+ .leftimg {
+    float:left; /* Выравнивание по левому краю */
+    margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
  }
 
  input, textarea, select {
@@ -29,12 +68,13 @@
   	margin-bottom: 15px;
  }
 
- input:focus {
- 	border: 2px solid #28166f;
- }
-
  div.sign_up {
  	max-width: 300px;
+ }
+
+ div.sign_block {
+ 	right: 1px;
+ 	text-align: right;
  }
 
  div.logobk {
@@ -49,39 +89,41 @@
  	color: #999;
  	font-size: 8.0pt;
  	right: 1px;
+ 	text-align: right;
  }
  div#error_explanation{
  	color: red;
  	font-size: 8.0pt;
+ 	li {
+ 		list-style-type: none;
+ 	}
  }
- 
- div#error_explanation li{
- 	list-style-type: none;
- }
+
  /*стили меню*/
  ul#topmenu {
  	list-style: none;
  	padding: 0;
+ 	text-align: center;
  	margin-bottom: 40px;
  	margin-top: 5px;
- 	margin-left: 0px;
  	font-size: 15.0pt;
  	font-weight: bold; 
-
- }
- 	ul#topmenu li {
+ 	li {
  		display: inline;
- 	}
- 		ul#topmenu li a {
+ 		padding-left: 15px;
+ 		a {
  			text-decoration: none;
  			color: #999;
+ 			&:hover {
+ 						color: #28166f;
+ 			}
+ 			&:active {
+ 						color:red;
+ 			}
  		}
- 			ul#topmenu li a:hover{
- 				color: #28166f;
- 			}
- 			ul#topmenu li a:active{
- 				color: red;
- 			}
+ 	}
+
+ }
  /*конец --стили меню*/	
 
  footer.footer{
@@ -101,14 +143,39 @@
  	background-position: center;
  }
  #sign_up {
-	display: block;
  	font-size: 9.0pt;
- 	margin: 0 auto;
- 	max-width: 960px;
  	color: #999;
- 	right: -1px;
  } 
 
+/* sidebar */
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+ .gravatar {
+   float: left;
+   margin-right: 10px;
+ }
 
  /*Мобильная версия*/
 @media only screen and (max-width: 850px){
