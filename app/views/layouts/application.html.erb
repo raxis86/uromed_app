@@ -10,34 +10,14 @@
   <![endif]-->
 </head>
 <body>
-<header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="logobk">
-      	<%= link_to "", root_path, id: "logo"%>
-      	<%= link_to "Регистрация", signup_path, id: "sign_up" %>
-      </div>
-      <div class="content-wrapper">
-      	  <div class="topinfo">
-      	  	Лицензия № 03-01-000175 от 27.12.2007.
-            Часы работы: с 9-00 до 19-00, 
-            суббота – с 9 до 13-00,
-            выходной – воскресенье.
-            тел. (3012) 46-72-82
-      	  </div>
-          <nav>
-            <ul id="topmenu">
-              <li><%= link_to "Главная", root_path %></li>
-              <li><%= link_to "Деятельность", about_path %></li>
-              <li><%= link_to "Стоимость услуг", '#' %></li>
-              <li><%= link_to "Контакты", contacts_path %></li>
-              <li><%= link_to "Полезная информация", other_path %></li>
-            </ul>
-          </nav>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <%= yield %>
-      <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
-    </div>
+  <%= render 'layouts/header' %>
+  <div class="content-wrapper">
+    <% flash.each do |key,value| %>
+      <div class="alert alert-<%= key %>"><%= value %> </div>
+    <% end %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+    <%= debug(params) if Rails.env.development? %>
+  </div>
 </body>
 </html>
