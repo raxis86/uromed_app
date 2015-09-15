@@ -13,6 +13,30 @@
  	margin: 0 auto;
  	max-width: 960px;
  }
+
+ .gravatar {
+   float: left;
+   margin-right: 10px;
+ }
+
+ .btn {
+
+ }
+
+ input, textarea, select {
+  	border: 1px solid #bbb;
+  	width: 100%;
+  	margin-bottom: 15px;
+ }
+
+ input:focus {
+ 	border: 2px solid #28166f;
+ }
+
+ div.sign_up {
+ 	max-width: 300px;
+ }
+
  div.logobk {
  	border-top: 10px solid #28166f;
  	background: #fff;
@@ -25,6 +49,14 @@
  	color: #999;
  	font-size: 8.0pt;
  	right: 1px;
+ }
+ div#error_explanation{
+ 	color: red;
+ 	font-size: 8.0pt;
+ }
+ 
+ div#error_explanation li{
+ 	list-style-type: none;
  }
  /*стили меню*/
  ul#topmenu {
