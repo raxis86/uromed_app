@@ -4,7 +4,26 @@
       	
       </div>
       <div class="content-wrapper">
-          <div class="sign_block"><%= link_to "Регистрация", signup_path, id: "sign_up" %> </div>
+          <div class="sign_block">
+            <%= link_to "Регистрация", signup_path %>
+            <% if signed_in? %>
+              <li id="top-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right" id="right-menu" >
+                <li><%= link_to "Профиль", current_user %></li>
+                <li><%= link_to "Настройки", '#' %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Выход", signout_path, method: "delete" %>
+                </li>
+              </ul>
+              </li>
+            <% else %>
+              <%= link_to "Вход", signin_path, id: "sign_up" %>
+            <% end %> 
+          </div>
       	  <div class="topinfo">
       	  	Лицензия № 03-01-000175 от 27.12.2007.
             Часы работы: с 9-00 до 19-00, 

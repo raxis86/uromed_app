@@ -75,6 +75,10 @@ p.home-center {
  div.sign_block {
  	right: 1px;
  	text-align: right;
+  a {
+      font-size: 9.0pt;
+      color: #999;
+  }
  }
 
  div.logobk {
@@ -142,10 +146,13 @@ p.home-center {
  	background-repeat: no-repeat;
  	background-position: center;
  }
- #sign_up {
- 	font-size: 9.0pt;
- 	color: #999;
- } 
+ #top-menu {
+  list-style: none;
+ }
+ #right-menu {
+  max-width: 100px;
+  right: 1px;
+ }
 
 /* sidebar */
 

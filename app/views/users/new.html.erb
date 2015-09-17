@@ -1,7 +1,8 @@
 <% provide(:title, 'Регистрация') %>
 <h1>Регистрация</h1>
-<div class="sign_up">
-	<%= form_for(@user) do |f| %>
+<div class="row">
+  <div class="span6 offset3">
+	  <%= form_for(@user) do |f| %>
 	  <%= render 'shared/error_messages' %>
 	  <%= f.label :name , "Имя"%>
       <%= f.text_field :name %>
@@ -17,4 +18,5 @@
 
       <%= f.submit "Зарегистрироваться", class: "btn btn-large btn-primary" %>
     <% end %>
+  </div>
 </div>
