@@ -6,8 +6,7 @@
 		<% if value[:cost] == "" %>
 			<td>
 			<H<%= value[:hilevel] %>> 
-				<%= value[:name] %> 
-				
+				<%= value[:name] %> 			
 			</H<%= value[:hilevel] %>>
 			</td>
 			<td>
@@ -15,10 +14,10 @@
 			<% if current_user %>
 					<% if current_user.admin?  %>
 					<td>
-					<%= link_to 'изменить', price_path(@prices.find_by(value[:id])) %>
+					<%= link_to 'изменить', edit_price_path(@prices.find_by(id: value[:id])) %>
 					</td>
 					<td>
-					<%= link_to 'удалить', @prices.find_by(value[:id]), method: :delete,
+					<%= link_to 'удалить', @prices.find_by(id: value[:id]), method: :delete,
                                   data: { confirm: "Вы уверены?" } %>
                     </td>
 					<% end %>
@@ -36,10 +35,10 @@
 					<% if current_user %>
 						<% if current_user.admin?  %>
 							<td> 
-								<%= link_to 'изменить', price_path(@prices.find_by(value[:id])) %>
+								<%= link_to 'изменить', edit_price_path(@prices.find_by(id: value[:id])) %>
 							</td>
 							<td>
-			 					<%= link_to 'удалить', @prices.find_by(value[:id]), method: :delete,
+			 					<%= link_to 'удалить', @prices.find_by(id: value[:id]), method: :delete,
                                   data: { confirm: "Вы уверены?" } %>
                        	 	</td>
 						<% end %>

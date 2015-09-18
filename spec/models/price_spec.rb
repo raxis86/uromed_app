@@ -15,4 +15,9 @@ describe Price do
   	before { @price.parentid = nil }
   	it { should_not be_valid }
   end
+
+  describe "name not be blank" do
+    before { @price.name = "" }
+    it { should_not be_valid }
+  end
 end

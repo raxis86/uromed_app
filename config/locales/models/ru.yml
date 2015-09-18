@@ -6,3 +6,5 @@ ru:
       user:
         name: Имя
         password: Пароль
+      price:
+        name: Наименование
