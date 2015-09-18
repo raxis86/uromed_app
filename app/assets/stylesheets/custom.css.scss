@@ -95,6 +95,18 @@ p.home-center {
  	right: 1px;
  	text-align: right;
  }
+ div.price {
+  H1,H2,H3,H4,H5,H6,H7 {
+    text-align: left;
+  }
+  table {
+    width: 100%;
+  }
+  td {
+    border-style: double;
+    text-align: justify;
+  }
+ }
  div#error_explanation{
  	color: red;
  	font-size: 8.0pt;

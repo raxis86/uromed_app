@@ -1,0 +1,10 @@
+<% provide(:title, 'Стоимость услуг') %>
+<H2>Стоимость услуг</H2>
+  
+<% if current_user %>
+	<% if current_user.admin?  %>
+	<%= link_to "добавить запись", new_price_path %>
+	<% end %>
+<% end %>
+
+<%= render 'prices' %>

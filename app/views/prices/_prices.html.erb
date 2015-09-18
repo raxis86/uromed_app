@@ -1,0 +1,51 @@
+<div class="price">
+<table>
+	<% tree(@prices, 0).each do |key,value| %>
+	
+		<tr>
+		<% if value[:cost] == "" %>
+			<td>
+			<H<%= value[:hilevel] %>> 
+				<%= value[:name] %> 
+				
+			</H<%= value[:hilevel] %>>
+			</td>
+			<td>
+			</td>
+			<% if current_user %>
+					<% if current_user.admin?  %>
+					<td>
+					<%= link_to 'изменить', price_path(@prices.find_by(value[:id])) %>
+					</td>
+					<td>
+					<%= link_to 'удалить', @prices.find_by(value[:id]), method: :delete,
+                                  data: { confirm: "Вы уверены?" } %>
+                    </td>
+					<% end %>
+				<% end %> 
+		</tr>
+		<% else %>
+			
+				<tr>
+					<td>
+						<%= value[:name] %>
+					</td>
+					<td>
+						<%= value[:cost] %>
+					</td>
+					<% if current_user %>
+						<% if current_user.admin?  %>
+							<td> 
+								<%= link_to 'изменить', price_path(@prices.find_by(value[:id])) %>
+							</td>
+							<td>
+			 					<%= link_to 'удалить', @prices.find_by(value[:id]), method: :delete,
+                                  data: { confirm: "Вы уверены?" } %>
+                       	 	</td>
+						<% end %>
+					<% end %>
+				</tr>
+		<% end %>
+	<% end %>
+	</table>
+</div>

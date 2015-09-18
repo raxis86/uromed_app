@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #get "static_pages/contacts"
   #get "static_pages/other"
   root  'static_pages#home'
-  match '/price',     to: 'prices#index',           via: 'get'
+  #match '/price',     to: 'prices#index',           via: 'get'
   match '/signup',    to: 'users#new',              via: 'get'
   match '/signin',    to: 'sessions#new',           via: 'get'
   match '/signout',   to: 'sessions#destroy',       via: 'delete'  

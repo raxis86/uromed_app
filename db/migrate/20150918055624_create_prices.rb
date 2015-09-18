@@ -3,9 +3,9 @@ class CreatePrices < ActiveRecord::Migration
     create_table :prices do |t|
       t.string :name
       t.string :cost
+      t.integer :parentid, default: 0
 
       t.timestamps null: false
     end
-    add_column :prices, :parentid, :integer, default: 0
   end
 end
