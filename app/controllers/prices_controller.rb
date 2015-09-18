@@ -12,7 +12,7 @@ class PricesController < ApplicationController
 	def create
 		@price = Price.new(price_params)
 		if @price.save
-			redirect_to 'index'
+			redirect_to prices_path
 		else
 			render 'new'
 		end
@@ -30,6 +30,13 @@ class PricesController < ApplicationController
 		else
 			render 'edit'
 		end
+	end
+
+	def destroy
+		prdel = Price.find(params[:id]).id
+    	Price.find(params[:id]).destroy
+    	flash[:success] = "Услуга id = #{prdel} удалена!"
+    	redirect_to prices_url
 	end
 
 	private

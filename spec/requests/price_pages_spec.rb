@@ -45,7 +45,19 @@ describe "Price pages" do
       it { should have_link('добавить запись', href: new_price_path) }
       it { should have_link('удалить', href: price_path(@p.id)) }
       it { should have_link('изменить', href: edit_price_path(@p.id)) }
-    end
+      it { should have_content("id = #{ @p.id }") }
+
+      describe "click delete link" do
+
+        it "should be able to delete another price" do
+          expect do
+            click_link('удалить', match: :first)
+          end.to change(Price, :count).by(-1)
+        end
+
+      end #"click delete link"
+
+    end #"index with admin users"
 
   end
 
@@ -78,15 +90,14 @@ describe "Price pages" do
       it { should have_title(full_title('Новая услуга')) }
       it { should have_content('Ввод новой услуги') }
 
-      describe "with invalid information" do
+      describe "create a new price with invalid information" do
         it "should not create a price" do
           expect { click_button submit }.not_to change(Price, :count)
         end
 
-        #it { should have_title(full_title('Новая услуга')) }
-      end #"with invalid information"
+      end #"create a new price with invalid information"
 
-      describe "with valid information" do
+      describe "create a new price with valid information" do
         before do
           fill_in "Наименование",      with: "Обследование"
           fill_in "Стоимость",        with: ""
@@ -97,9 +108,7 @@ describe "Price pages" do
           expect { click_button submit }.to change(Price, :count).by(1)
         end
 
-        #it { should have_title(full_title('Стоимость услуг')) }
-        #it { should have_content('Обследование') }
-      end #"with valid information"
+      end #"create a new price with valid information"
 
     end # "with admin" 
     

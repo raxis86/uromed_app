@@ -14,6 +14,9 @@
 			<% if current_user %>
 					<% if current_user.admin?  %>
 					<td>
+						id = <%= @prices.find_by(id: value[:id]).id %>
+					</td>
+					<td>
 					<%= link_to 'изменить', edit_price_path(@prices.find_by(id: value[:id])) %>
 					</td>
 					<td>
@@ -34,6 +37,9 @@
 					</td>
 					<% if current_user %>
 						<% if current_user.admin?  %>
+							<td>
+								id = <%= @prices.find_by(id: value[:id]).id %>
+							</td>
 							<td> 
 								<%= link_to 'изменить', edit_price_path(@prices.find_by(id: value[:id])) %>
 							</td>
