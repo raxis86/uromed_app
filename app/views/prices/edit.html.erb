@@ -1,0 +1,33 @@
+<% provide(:title, 'Редактироваие услуги') %>
+<H2>Редактироваие услуги</H2>
+
+<div class="row">
+  <div class="span6 offset3">
+  	<%= form_for @price do |f| %>
+    
+  		<% if @price.errors.any? %>
+  			<div id="error_explanation">
+    			<div class="alert alert-error">
+      				<%= pluralize(@price.errors.count, "error") %>.
+    			</div>
+    			<ul>
+    				<% @price.errors.full_messages.each do |msg| %>
+      					<li>* <%= msg %></li>
+    				<% end %>
+    			</ul>
+  			</div>
+		  <% end %>
+
+  		<%= f.label :name, "Наименование" %>
+  		<%= f.text_field :name %>
+
+  		<%= f.label :cost, "Стоимость" %>
+  		<%= f.text_field :cost %>
+
+  		<%= f.label :parentid, "Код родителя" %>
+  		<%= f.number_field :parentid %>
+
+  		<%= f.submit "Сохранить", class: "btn btn-large btn-primary" %>
+  	<% end %>
+  </div>
+ </div>
