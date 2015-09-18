@@ -9,4 +9,10 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :price do
+    name "Консультация"
+    cost ""
+    parentid 0
+  end
 end
