@@ -41,4 +41,15 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   # Speed up tests by lowering bcrypt's cost function.
   ActiveModel::SecurePassword.min_cost = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.yandex.ru',
+    #port:                 465,
+    #domain:               'uromed-lkc.ru',
+    user_name:            'support@uromed-lkc.ru',
+    password:             'V@lidator',
+    authentication:       'plain',
+    enable_starttls_auto: true  
+  }
 end

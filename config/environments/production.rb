@@ -76,4 +76,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.yandex.ru',
+    #port:                 465,
+    #domain:               'uromed-lkc.ru',
+    user_name:            'support@uromed-lkc.ru',
+    password:             'V@lidator',
+    authentication:       'plain',
+    enable_starttls_auto: true  
+  }
+
 end
