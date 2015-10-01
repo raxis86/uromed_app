@@ -102,9 +102,11 @@ describe "User pages" do
         before { click_button submit }
         let(:user) { User.find_by(email: 'user@example.com') }
 
-        it { should have_link('Выход') }
-        it { should have_title(user.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Поздравляем') }
+        it { should have_selector('div.alert.alert-success', text: 'На указанный email отправлено письмо с дальнейшими инструкциями!') }
+
+        #it { should have_link('Выход') }
+        #it { should have_title(user.name) }
+        #it { should have_selector('div.alert.alert-success', text: 'Поздравляем') }
       end
 
     end

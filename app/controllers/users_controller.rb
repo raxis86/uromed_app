@@ -12,9 +12,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in @user
-      flash[:success] = "Поздравляем с регистрацией на uromed-lkc.ru!"
-      redirect_to @user
+      UserMailer.registration_confirmation(@user).deliver_now
+      flash[:success] = "На указанный email отправлено письмо с дальнейшими инструкциями!"
+      redirect_to signin_url
+      #sign_in @user
+      #flash[:success] = "Поздравляем с регистрацией на uromed-lkc.ru!"
+      #redirect_to @user
     else
       render 'new'
     end
@@ -45,6 +48,17 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "Пользователь #{usdel} удалён!"
     redirect_to users_url
+  end
+
+  def email_confirm
+    user = User.find_by_confirm_token(params[:id])
+    if user && user.email_activate
+      flash[:success] = "Ваш email успешно подтвержден! Регистрация завершена! Теперь вы можете войти!"
+      redirect_to signin_url
+    else
+      flash[:error] = "Ссылка недействительна! Возможно пользователь уже подтвердил регистрацию."
+      redirect_to root_url
+    end
   end
 
   private

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  get 'email_confirm/new'
+
   #get 'users/new'
-  resources :users
+  resources :users do
+    member do
+      get :email_confirm
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :prices
   #get "static_pages/home"

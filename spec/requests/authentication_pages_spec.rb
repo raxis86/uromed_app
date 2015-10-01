@@ -24,7 +24,7 @@ describe "Authentication" do
         before { click_link "Зарегистрируйтесь сейчас!" }
         it { should_not have_selector('div.alert.alert-error') }
       end
-    end
+    end #"with invalid information"
 
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
@@ -40,18 +40,18 @@ describe "Authentication" do
       describe "followed by signout" do
         before { click_link "Выход" }
         it { should have_link('Вход') }
-      end
+      end #"followed by signout"
 
-    end
+    end #"with valid information"
 
-  end
+  end #"signin"
 
   describe "authorization" do
 
     describe "for non-signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
 
-        describe "when attempting to visit a protected page" do
+      describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
           fill_in "Email",    with: user.email
@@ -64,8 +64,9 @@ describe "Authentication" do
           it "should render the desired protected page" do
             expect(page).to have_title('Редактирование пользователя')
           end
-        end
-      end
+        end #"after signing in"
+
+      end #"when attempting to visit a protected page"
 
       describe "in the Users controller" do
 
@@ -84,8 +85,9 @@ describe "Authentication" do
           it { should have_title('Вход') }
         end
 
-      end
-    end
+      end #"in the Users controller"
+
+    end #"for non-signed-in users"
 
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
@@ -102,7 +104,8 @@ describe "Authentication" do
         before { patch user_path(wrong_user) }
         specify { expect(response).to redirect_to(root_url) }
       end
-    end
+
+    end #"as wrong user"
 
     describe "as non-admin user" do
       let(:user) { FactoryGirl.create(:user) }
@@ -114,8 +117,45 @@ describe "Authentication" do
         before { delete user_path(user) }
         specify { expect(response).to redirect_to(root_url) }
       end
-    end
 
-  end
+    end #"as non-admin user"
 
-end
+    describe "for non-email_confirmed users" do
+      let(:user) { FactoryGirl.create(:user_no_confirm) }
+
+      describe "when attempting to visit a protected page" do
+        before do
+          visit edit_user_path(user)
+          fill_in "Email",    with: user.email
+          fill_in "Пароль", with: user.password
+          click_button "Вход"
+        end
+
+        describe "after signing in" do
+          it { should have_title('Вход') }
+          it { should have_selector('div.alert.alert-notice') }
+        end #"after signing in"
+
+      end #"when attempting to visit a protected page"
+
+      describe "when attemoting to confirm email" do
+        before do
+          user.update_attributes(confirm_token: "123")
+        end
+
+        describe "submitting a GET request to the users#email_confirm" do
+          before { get email_confirm_user_path(user.confirm_token) }
+          
+          specify { expect(response).to redirect_to(signin_url) }
+
+          #it { should have_selector('div.alert.alert-success') }
+          #it { should have_title('Вход') }
+        end #"submitting a GET request to the users#email_confirm"
+
+      end #"when attemoting to confirm email"
+
+    end #"for non-email_confirmed users"
+
+  end #"authorization" 
+
+end #"Authentication"

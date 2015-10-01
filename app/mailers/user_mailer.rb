@@ -1,8 +1,8 @@
 class UserMailer < ApplicationMailer
 
-	def welcome_email(user)
+	def registration_confirmation(user)
 		@user = user
-		@url = signin_url
+		@url = email_confirm_user_url(@user.confirm_token)
 		mail(to: @user.email, subject: "Спасибо за регистрацию на сайте www.uromed-lkc.ru!")
 	end
 

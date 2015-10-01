@@ -17,9 +17,12 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:email_confirmed) }
+  it { should respond_to(:confirm_token) }
 
   it { should be_valid}
   it { should_not be_admin }
+  it { should_not be_email_confirmed}
 
   describe "with admin attribute set to 'true'" do
     before do
@@ -28,6 +31,15 @@ describe User do
     end
 
     it { should be_admin }
+  end
+
+  describe "with email_confirmed attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:email_confirmed)
+    end
+
+    it { should be_email_confirmed }
   end
 
   describe "when name is not present" do
@@ -125,6 +137,11 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end 
+
+  describe "confirm token" do
+    before { @user.save }
+    its(:confirm_token) { should_not be_blank }
   end 
 
 end

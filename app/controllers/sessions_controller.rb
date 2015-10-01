@@ -6,8 +6,15 @@ class SessionsController < ApplicationController
 	def create
 		user = User.find_by(email: params[:session][:email].downcase)
 		if user && user.authenticate(params[:session][:password])
-			sign_in user
-			redirect_back_or user
+			if user.email_confirmed
+				sign_in user
+				redirect_back_or user
+			else
+				flash.now[:notice] = 'Вы не завершили регистрацию! 
+				Для завершения регистрации перейдите по ссылке в письме,
+				отправленном на ваш Email.'
+				render 'new'
+			end
 		else
 			flash.now[:error] = 'Неправильный Email/Пароль'
 			render 'new'
