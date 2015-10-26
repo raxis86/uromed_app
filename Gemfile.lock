@@ -267,7 +267,7 @@ DEPENDENCIES
   jquery-rails (= 3.0.4)
   libnotify (= 0.8.0)
   mail
-  pg (= 0.15.1)
+  pg
   rails (= 4.2)
   rails_12factor (= 0.0.2)
   rspec-rails
@@ -279,3 +279,6 @@ DEPENDENCIES
   turbolinks (~> 2.5.3)
   uglifier (= 2.1.1)
   will_paginate (= 3.0.4)
+
+BUNDLED WITH
+   1.10.6
